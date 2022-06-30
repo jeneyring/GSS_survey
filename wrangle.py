@@ -73,3 +73,10 @@ def split(df):
 
     return train, validate, test
 
+##########################################
+# Adding bins, encoding columns and more....
+
+def age_bin(df):
+    ages = df.age
+    df.age = pd.cut(ages, 8, precision=0)
+    return df
