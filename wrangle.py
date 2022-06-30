@@ -5,6 +5,7 @@
 ## 2) in same notebook, to split: 'train, validate, test = split(df)'
 #imports:
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 
 ################################################
@@ -17,12 +18,12 @@ def get_gss():
     return df
 
 def get_columns(df):
-    df = df[['zodiac','born', 'race', 
-          'ethnic', 'age', 'sex', 'sexornt', 
-          'marital', 'martype','paocc10', 'maocc10', 'res16', 
+    df = df[['zodiac','race', 
+           'age', 'sex', 'sexornt', 
+          'marital',  'res16', 
           'reg16', 'degree',  
           'income', 'wrkslf', 'satjob', 'occ10','partyid', 
-          'if16who', 'polviews', 'gunlaw', 'grassv','relidesc', 'relig', 
+          'if16who', 'polviews', 'gunlaw', 'grassv', 'relig', 
           'postlifev', 'postlifenv', 'sprtprsn', 'sprtconnct', 'sprtlrgr', 
           'sprtpurp','happy', 'life', 'obey', 'popular', 'thnkself', 
           'workhard', 'helpoth', 'grtwrks', 'freemind', 'decevidc', 'advfmsci',
@@ -42,6 +43,12 @@ def wrangle_gss(df):
     df = df.fillna('unknown')
     return df
 
+"""This function changes ages to float types"""
+def age_change(df):
+    df.age = np.where(df.age == df[df.age.str.len()>5].age.values[0], '89.0', df.age)
+    df.age = np.where(df.age == 'unknown', round(df.age[df.age != 'unknown'].astype(float).mean()), df.age)
+    df.age = df.age.astype(float)
+    return df
 
 #### Taking above functions into one:
 
@@ -49,6 +56,7 @@ def acquire_prep():
     df = get_gss()
     df = get_columns(df)
     df = wrangle_gss(df)
+    df = age_change(df)
     return df
 
 #######################################################
