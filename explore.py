@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
+import seaborn as sns
+from scipy import stats
 
 ##########################################################
 # This file holds functions for the EDA (exploration) phase of the 
@@ -17,6 +19,13 @@ def variable_count(df):
         sns.countplot(data = df, y = col)
         plt.tight_layout()
         plt.show()
+
+"""This function bins the ages column"""
+def age_bin(df):
+    #binning age into decades (8 equal bins)
+    ages = df.age
+    df.age = pd.cut(ages, 8, precision=0)
+    return df
 
 """This get_dummies and encodes the zodiac column per zodiac sign and then concats
 it back to the original df"""
@@ -58,6 +67,16 @@ def zodiac_dates(row):
 #adding this row with the date function:
 def add_zdates(df):
     df['zodiac_dates'] = df.apply(lambda row: zodiac_dates(row), axis=1)
+    return df
+
+
+
+##################
+"""Adding all functions above together"""
+
+def prep_df(df):
+    df = age_bin(df)
+    df = dummy_zodiac(df)
     return df
 
 #function (made by Stephen Fitzsimon), to run variables against target by zodiac sub categories
