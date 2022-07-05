@@ -93,8 +93,8 @@ def mar_viz(df):
     #create chart in each subplot
 
     sns.barplot( data= df, x='marital', y="zodiac_capricorn", ax=axes[0,0])
-    sns.barplot(data= df, x='marital', y='zodiac_sagittarius', ax=axes[0,1])
-    sns.barplot(data= df, x='marital', y='zodiac_aquarius', ax=axes[1,0])
+    sns.barplot(data= df, x='marital', y='zodiac_libra', ax=axes[0,1])
+    sns.barplot(data= df, x='marital', y='zodiac_pisces', ax=axes[1,0])
     sns.barplot(data= df, x='marital', y='zodiac_scorpio', ax=axes[1,1])
 
 """This function shows political views of certain zodiac signs breakdown"""
@@ -106,7 +106,78 @@ def pol_viz(df):
 
     #create chart in each subplot
 
-    sns.barplot( data= df, x="zodiac_libra", y='polviews', ax=axes[0,0])
+    sns.barplot( data= df, x="zodiac_sagittarius", y='polviews', ax=axes[0,0])
     sns.barplot(data= df, x='zodiac_cancer', y='polviews', ax=axes[0,1])
     sns.barplot(data= df, x='zodiac_aries', y='polviews', ax=axes[1,0])
-    sns.barplot(data= df, x='zodiac_taurus', y='polviews', ax=axes[1,1])
+    sns.barplot(data= df, x='zodiac_gemini', y='polviews', ax=axes[1,1])
+
+"""This function shows religions of certain zodiac signs breakdown"""
+def reg_viz(df):
+    #define dimensions of subplots (rows, columns)
+    sns.set(rc={'figure.figsize':(18.7,13.27)})
+    fig, axes = plt.subplots(2, 2)
+    sns.set_theme(style="whitegrid")
+
+    #create chart in each subplot
+
+    sns.barplot( data= df, x="zodiac_libra", y='relig', ax=axes[0,0])
+    sns.barplot(data= df, x='zodiac_capricorn', y='relig', ax=axes[0,1])
+    sns.barplot(data= df, x='zodiac_pisces', y='relig', ax=axes[1,0])
+    sns.barplot(data= df, x='zodiac_gemini', y='relig', ax=axes[1,1])
+###################################
+# Driver visualizations:
+"""This function shows the workhard driver to certain zodiac signs breakdown"""
+def work_viz(df):
+    #define dimensions of subplots (rows, columns)
+    sns.set(rc={'figure.figsize':(18.7,13.27)})
+    fig, axes = plt.subplots(2, 2)
+    sns.set_theme(style="whitegrid")
+
+    #create chart in each subplot
+
+    sns.barplot( data= df, x="zodiac_leo", y='workhard', ax=axes[0,0])
+    sns.barplot(data= df, x='zodiac_capricorn', y='workhard', ax=axes[0,1])
+    sns.barplot(data= df, x='zodiac_virgo', y='workhard', ax=axes[1,0])
+    sns.barplot(data= df, x='zodiac_taurus', y='workhard', ax=axes[1,1])
+
+"""This function shows the mental health driver to certain zodiac signs breakdown"""
+def feel_viz(df):
+    #define dimensions of subplots (rows, columns)
+    sns.set(rc={'figure.figsize':(18.7,13.27)})
+    fig, axes = plt.subplots(2, 2)
+    sns.set_theme(style="whitegrid")
+
+    #create chart in each subplot
+
+    sns.barplot( data= df, x="zodiac_sagittarius", y='hlthmntl', ax=axes[0,0])
+    sns.barplot(data= df, x='zodiac_leo', y='hlthmntl', ax=axes[0,1])
+    sns.barplot(data= df, x='zodiac_capricorn', y='hlthmntl', ax=axes[1,0])
+    sns.barplot(data= df, x='zodiac_aquarius', y='hlthmntl', ax=axes[1,1])
+
+"""This function shows the amount of time with family driver to certain zodiac signs breakdown"""
+def fam_viz(df):
+    #define dimensions of subplots (rows, columns)
+    sns.set(rc={'figure.figsize':(18.7,13.27)})
+    fig, axes = plt.subplots(2, 2)
+    sns.set_theme(style="whitegrid")
+
+    #create chart in each subplot
+
+    sns.barplot( data= df, x="zodiac_aries", y='socrel', ax=axes[0,0])
+    sns.barplot(data= df, x='zodiac_gemini', y='socrel', ax=axes[0,1])
+    sns.barplot(data= df, x='zodiac_aquarius', y='socrel', ax=axes[1,0])
+    sns.barplot(data= df, x='zodiac_libra', y='socrel', ax=axes[1,1])
+
+"""This function shows the decisions and evidence driver to certain zodiac signs breakdown"""
+def fam_viz(df):
+    #define dimensions of subplots (rows, columns)
+    sns.set(rc={'figure.figsize':(18.7,13.27)})
+    fig, axes = plt.subplots(2, 2)
+    sns.set_theme(style="whitegrid")
+
+    #create chart in each subplot
+
+    sns.barplot( data= df, x="zodiac_pisces", y='decevidc', ax=axes[0,0])
+    sns.barplot(data= df, x='zodiac_leo', y='decevidc', ax=axes[0,1])
+    sns.barplot(data= df, x='zodiac_cancer', y='decevidc', ax=axes[1,0])
+    sns.barplot(data= df, x='zodiac_libra', y='decevidc', ax=axes[1,1])
